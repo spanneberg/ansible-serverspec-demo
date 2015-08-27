@@ -3,11 +3,24 @@ Vagrant.configure(2) do |config|
   # default base box for all defined boxes in this Vagrantfile
   config.vm.box = "ubuntu/trusty64"
 
+  config.vm.define "lb" do |lb|
+    lb.vm.hostname = "lb"
+    lb.vm.network "private_network", ip: "192.168.33.100"
+  end
+
   (1..3).each do |i|
     config.vm.define "node#{i}" do |node|
       node.vm.hostname = "web#{i}"
       node.vm.network "private_network", ip: "192.168.33.#{100 + i}"
     end
+  end
+
+  config.vm.provision "ansible" do |ansible|
+    ansible.playbook        = "ansible/playbook.yml"
+    ansible.inventory_path  = "ansible/inventory"
+    ansible.sudo            = true
+    #ansible.sudo_user       = "foobar"
+    ansible.verbose         = "vv"
   end
   
 end
@@ -24,7 +37,3 @@ end
 #  sudo apt-get update
 #SHELL
 
-#config.vm.provision "ansible" do |ansible|
-#  ansible.playbook  = "ansible/playbook.yml"
-#  ansible.sudo      = true
-#end
