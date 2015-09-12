@@ -1,0 +1,7 @@
+---
+
+- include: debian.yml
+  when: ansible_os_family == 'Debian'
+
+# TODO add RedHat/yum setup
+# TODO add parameters for version and JDK/JRE

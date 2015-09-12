@@ -1,0 +1,7 @@
+---
+
+- name: create deployment folder
+  file: path=/opt/example-service state=directory mode=0755
+
+- name: deploy Spring Boot application
+  copy: src=../deployment dest=/opt/example-service owner=root group=root mode=0644

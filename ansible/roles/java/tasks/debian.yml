@@ -1,0 +1,7 @@
+---
+
+- name: add apt repository for OpenJDK 8 
+  apt_repository: repo='ppa:openjdk-r/ppa'
+
+- name : install OpenJDK JRE 8
+  apt: name=openjdk-8-jre state=present

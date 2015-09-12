@@ -1,0 +1,5 @@
+---
+
+- hosts: web_nodes
+  roles:
+    - web_node

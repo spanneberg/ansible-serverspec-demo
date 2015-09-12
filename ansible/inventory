@@ -1,3 +1,9 @@
+[load_balancers]
+
+lb    ansible_ssh_host=192.168.33.100
+
+[web_nodes]
+
 node1 ansible_ssh_host=192.168.33.101
 node2 ansible_ssh_host=192.168.33.102
 node3 ansible_ssh_host=192.168.33.103
