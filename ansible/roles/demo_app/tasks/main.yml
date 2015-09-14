@@ -1,0 +1,15 @@
+---
+
+- name: create deployment folder
+  file: path={{application_path}} state=directory mode=0755
+
+- name: deploy Spring Boot application
+  copy: 
+    src=../deployment/demo-app.jar
+    dest={{application_path}}/demo-app.jar 
+    owner={{application_user}}
+    group={{application_group}}
+    mode=0644
+
+- name: create init script
+  template: src=init-script.j2 dest=/etc/init.d/demo-app owner=root group=root mode=0755

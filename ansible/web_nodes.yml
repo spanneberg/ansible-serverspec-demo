@@ -2,4 +2,5 @@
 
 - hosts: web_nodes
   roles:
-    - web_node
+    - web_common
+    - demo_app
