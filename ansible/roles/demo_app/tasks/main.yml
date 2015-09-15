@@ -3,13 +3,24 @@
 - name: create deployment folder
   file: path={{application_path}} state=directory mode=0755
 
-- name: deploy Spring Boot application
-  copy: 
-    src=../deployment/demo-app.jar
-    dest={{application_path}}/demo-app.jar 
-    owner={{application_user}}
-    group={{application_group}}
-    mode=0644
-
 - name: create init script
-  template: src=init-script.j2 dest=/etc/init.d/demo-app owner=root group=root mode=0755
+  template: 
+    src=init-script.j2 
+    dest=/etc/init.d/demo-app 
+    owner=root
+    group=root
+    mode=0755
+
+- name: stat remote application file
+  stat: path={{ application_path }}/demo-app.jar
+  register: remote_app_file
+
+- name: stat local application file
+  stat: path=../deployment/demo-app.jar
+  sudo: false
+  delegate_to: localhost
+  register: local_app_file
+
+- name: run deployment if a new version is available
+  include: deployment.yml
+  when: not remote_app_file.stat.exists or ( local_app_file.stat.exists and ( remote_app_file.stat.md5 != local_app_file.stat.md5 ))

@@ -12,9 +12,9 @@
 
 # PATH should only include /usr/* if it runs after the mountnfs.sh script
 NAME=demo_app
-DAEMON_USER=app
+DAEMON_USER={{ application_user }}
 DAEMON=/usr/bin/java
-DAEMON_OPTS="-jar /opt/demo-app/demo-app.jar"
+DAEMON_OPTS="-jar {{ application_path }}/demo-app.jar"
 PIDFILE=/var/run/demo_app.pid
 
 #
@@ -35,6 +35,12 @@ stop()
 	start-stop-daemon --stop --quiet --retry=TERM/30/KILL/5 --pidfile $PIDFILE --user $DAEMON_USER --exec $DAEMON
 }
 
+status()
+{
+	echo "Checking status of $NAME ..."
+	start-stop-daemon --status --pidfile $PIDFILE --user $DAEMON_USER --exec $DAEMON
+}
+
 case "$1" in
   start)
 	start
@@ -46,8 +52,11 @@ case "$1" in
 	stop
 	start
 	;;
+	status)
+	status
+	;;
   *)
-	echo "Usage: $0 {start|stop|restart|force-reload}" >&2
+	echo "Usage: $0 {start|stop|status|restart|force-reload}" >&2
 	exit 3
 	;;
 esac
