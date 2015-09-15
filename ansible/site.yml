@@ -1,14 +1,4 @@
 ---
 
-# - include: loadbalancer.yml
 - include: web_nodes.yml
-
-#  tasks:
-#    - name: add Apt repository to make OpenJdk 8 available 
-#      apt_repository: repo='ppa:openjdk-r/ppa'
-#    - name : install OpenJDK JRE 8
-#      apt: name=openjdk-8-jre state=present
-#    - name: create deployment folder
-#      file: path=/opt/example-service state=directory mode=0755
-#    - name: deploy Spring Boot application
-#      copy: src=../deployment dest=/opt/example-service owner=root group=root mode=0644
+- include: loadbalancers.yml
