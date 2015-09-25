@@ -23,7 +23,7 @@ PIDFILE=/var/run/demo_app.pid
 start()
 {
 	echo "Starting $NAME ..."
-	start-stop-daemon --start --background --quiet --pidfile $PIDFILE --user $DAEMON_USER --chuid $DAEMON_USER --exec $DAEMON -- $DAEMON_OPTS > /dev/null
+	start-stop-daemon --start --background --quiet --make-pidfile --pidfile $PIDFILE --user $DAEMON_USER --chuid $DAEMON_USER --exec $DAEMON -- $DAEMON_OPTS > /dev/null
 }
 
 #
