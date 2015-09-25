@@ -1,5 +1,10 @@
 ---
 
+# todo: 
+# * version asl var von aussen
+# * current/latest links 
+# * rollback (ggf. in eigenem play)
+
 - name: stop demo-app
   service: name=demo-app state=stopped
 
