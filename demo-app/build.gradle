@@ -11,9 +11,16 @@ apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'spring-boot'
 
+version = '0.0.2'
+
 jar {
     baseName = 'demo-app'
-    version =  '0.0.1'
+    version =  project.version
+	
+	manifest.attributes (
+		"Application-Name"    : project.name,
+		"Application-Version" : project.version
+	)
 }
 
 repositories {
@@ -26,9 +33,10 @@ targetCompatibility = 1.8
 dependencies {
     compile 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	compile 'org.webjars:bootstrap:3.3.5'
+	compile 'com.jcabi:jcabi-manifests:1.1'
     testCompile 'junit:junit'
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '2.5'
+    gradleVersion = '2.7'
 }

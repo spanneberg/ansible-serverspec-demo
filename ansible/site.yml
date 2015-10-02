@@ -2,6 +2,6 @@
 
 - include: web_nodes.yml
   vars:
-    demo_app_version: 0.0.1
+    demo_app_version: 0.0.2
 
 - include: loadbalancers.yml
