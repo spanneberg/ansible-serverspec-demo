@@ -1,23 +1,25 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="en" >
 <head>
-    <title>Getting Started: Serving Web Content</title>
+    <title>Demo app information page</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.5/css/bootstrap.min.css"
+      th:href="@{/webjars/bootstrap/3.3.5/css/bootstrap.min.css}"
+      rel="stylesheet" media="screen" />
 </head>
 <body>
-  <table>
-    <thead>
-      <th>Attribute</th>
-      <th>Value</th>
-    </thead>
-    <tr>
-      <td>Hostname</td>
-      <td th:text="${hostname}">foobar</td>
-    </tr>
-    <tr>
-      <td>Address</td>
-      <td th:text="${address}">1.2.3.4</td>
-    </tr>
-  </table>
+  <div class="container">
+    <h1>Host properties</h1>
+    <table class="table">
+	    <thead>
+	      <th>Attribute</th>
+	      <th>Value</th>
+	    </thead>
+	    <tr>
+	      <td>Hostname</td>
+	      <td th:text="${hostname}">foobar</td>
+	    </tr>
+	  </table>
+  </div>
 </body>
 </html>

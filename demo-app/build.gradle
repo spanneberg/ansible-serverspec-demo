@@ -24,8 +24,9 @@ sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 dependencies {
-    compile("org.springframework.boot:spring-boot-starter-thymeleaf")
-    testCompile("junit:junit")
+    compile 'org.springframework.boot:spring-boot-starter-thymeleaf'
+	compile 'org.webjars:bootstrap:3.3.5'
+    testCompile 'junit:junit'
 }
 
 task wrapper(type: Wrapper) {
