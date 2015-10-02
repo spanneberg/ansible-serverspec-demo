@@ -1,6 +1,7 @@
 ---
 
 - hosts: web_nodes
+  serial: 1
   roles:
     - web_common
     - demo_app

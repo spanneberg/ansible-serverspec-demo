@@ -11,7 +11,7 @@ apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'spring-boot'
 
-version = '0.0.2'
+version = '0.0.3'
 
 jar {
     baseName = 'demo-app'
