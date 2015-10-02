@@ -16,7 +16,7 @@
   register: remote_app_file
 
 - name: stat local application file
-  stat: path=../deployment/demo-app.jar
+  stat: path=../deployment/demo-app-{{demo_app_version}}.jar
   sudo: false
   delegate_to: localhost
   register: local_app_file

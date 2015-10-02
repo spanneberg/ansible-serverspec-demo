@@ -10,7 +10,7 @@
 
 - name: deploy demo-app
   copy: 
-    src=../deployment/demo-app.jar
+    src=../deployment/demo-app-{{demo_app_version}}.jar
     dest={{application_path}}/demo-app.jar 
     owner={{application_user}}
     group={{application_group}}
