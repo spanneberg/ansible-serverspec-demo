@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+  <table>
+    <thead>
+      <th>Attribute</th>
+      <th>Value</th>
+    </thead>
+    <tr>
+      <td>Hostname</td>
+      <td th:text="${hostname}">foobar</td>
+    </tr>
+    <tr>
+      <td>Address</td>
+      <td th:text="${address}">1.2.3.4</td>
+    </tr>
+  </table>
+</body>
+</html>
