@@ -5,6 +5,12 @@
 # * current/latest links 
 # * rollback (ggf. in eigenem play)
 
+- debug: msg={{ inventory_hostname }}
+
+- name: remove host from loadbalancer pool
+  haproxy: state=disabled host={{ inventory_hostname }} backend=webnodes
+  delegate_to: lb
+
 - name: stop demo-app
   service: name=demo-app state=stopped
 
@@ -18,3 +24,7 @@
 
 - name: start demo-app
   service: name=demo-app state=started
+
+- name: add host back to loadbalancer pool
+  haproxy: state=enabled host={{ inventory_hostname }} backend=webnodes
+  delegate_to: lb

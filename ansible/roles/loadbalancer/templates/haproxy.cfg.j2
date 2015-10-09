@@ -2,6 +2,7 @@ global
 	log /dev/log	local0
 	log /dev/log	local1 notice
 	chroot /var/lib/haproxy
+	stats socket /var/run/haproxy.sock level admin
 	user haproxy
 	group haproxy
 	daemon
@@ -31,7 +32,7 @@ backend webnodes
 	mode http
 	balance roundrobin
 	option forwardfor
-	server web01 192.168.33.101:8080 check
-	server web02 192.168.33.102:8080 check
-	server web03 192.168.33.103:8080 check
+	server node1 192.168.33.101:8080 check
+	server node2 192.168.33.102:8080 check
+	server node3 192.168.33.103:8080 check
 
