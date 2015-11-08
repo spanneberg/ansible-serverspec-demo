@@ -4,6 +4,11 @@ require 'spec_helper'
 #   it { should be_installed }
 # end
 
+describe user('app') do
+  it { should exist }
+  it { should have_login_shell '/usr/sbin/nologin' }
+end
+
 # describe service('demo-app'), :if => os[:family] == 'ubuntu' do
 describe service('demo-app') do
   it { should be_running }
