@@ -1,9 +1,8 @@
 ---
 
 # todo: 
-# * version asl var von aussen
 # * current/latest links 
-# * rollback (ggf. in eigenem play)
+# * rollback (ggf. in separate playbook)
 
 - debug: msg={{ inventory_hostname }}
 
@@ -27,6 +26,8 @@
 
 - name: wait for demo-app to become available
   wait_for: port=8080 timeout=90
+
+# rollback + feedback would go here in case of timeout
 
 - name: add host back to loadbalancer pool
   haproxy: state=enabled host={{ inventory_hostname }} backend=webnodes

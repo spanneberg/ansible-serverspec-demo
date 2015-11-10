@@ -1,6 +1,6 @@
 ---
 
-- name: create user for application
+- name: create group for application
   group: name=app state=present
 
 - name: create user for application
